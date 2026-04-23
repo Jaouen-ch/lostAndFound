@@ -14,7 +14,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -24,9 +23,23 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+/.vs
+x64/
+
+# CLion project files
+.idea
+cmake-build-*
+
+# Mac files
+**/.DS_Store
+__MACOSX/
+.AppleDouble
+.LSOverride
+Icon[]
+CMakeLists.txt
