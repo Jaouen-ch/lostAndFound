@@ -1,8 +1,24 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
+#include "gameLoop.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    sf::Vector2f test = {0, 0};
+    sf::ContextSettings settings;
+    settings.antiAliasingLevel = 8;
+    auto window = sf::RenderWindow(sf::VideoMode({ WINDOW_WIDTH, WINDOW_HEIGHT }), "Lost And Found", sf::Style::Default, sf::State::Windowed, settings);
+    window.setVerticalSyncEnabled(true);
+
+    auto currentGameLoop = gameLoop(window);
+
+    while (window.isOpen())
+    {
+        while (const std::optional event = window.pollEvent())
+        {
+            currentGameLoop.eventsHandler(window, event);
+        }
+
+        currentGameLoop.update();
+        window.clear();
+        currentGameLoop.draw(window);
+        window.display();
+    }
 }
