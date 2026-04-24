@@ -1,5 +1,5 @@
 #include "clickableComponent.h"
-
+#include "textComponent.h"
 #include "counterComponent.h"
 #include "counterModifierComponent.h"
 
@@ -37,6 +37,14 @@ void clickableComponent::update(float deltaTime)
         if (counterModifierComp != nullptr)
         {
             counterModifierComp->setCount(counterModifierComp->getCount() + 1);
+        }
+    }
+    if (click)
+    {
+        auto textComp = owner->getComponent<textComponent>();
+        if (textComp != nullptr)
+        {
+            textComp->setText("aaaaaa");
         }
     }
     if (wasButtonLeftPressed && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))

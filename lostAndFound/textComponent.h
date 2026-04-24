@@ -17,6 +17,7 @@ public:
     void update(float deltaTime) override;
     void draw(sf::RenderWindow& window) override;
 
+    sf::String getText();
     void setText(sf::String newText);
     void setPosition(sf::Vector2f newPosition);
 };

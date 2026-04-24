@@ -1,5 +1,4 @@
 #include "textComponent.h"
-
 #include "counterComponent.h"
 
 textComponent::textComponent(gameObject* _owner, assetsHandler::fontsIndices font, sf::String _text, sf::Vector2f position, unsigned int characterSize)
@@ -23,6 +22,11 @@ void textComponent::update(float deltaTime)
 void textComponent::draw(sf::RenderWindow& window)
 {
     window.draw(text);
+}
+
+sf::String textComponent::getText()
+{
+    return text.getString();
 }
 
 void textComponent::setText(sf::String newText)
