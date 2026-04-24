@@ -8,6 +8,8 @@ public:
     enum class texturesIndices
     {
         defaultTexture,
+        blue,
+        red,
     };
 
     enum class fontsIndices
