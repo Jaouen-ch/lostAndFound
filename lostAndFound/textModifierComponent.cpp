@@ -1,19 +1,19 @@
-#include "textModifier.h"
+#include "textModifierComponent.h"
 #include "counterComponent.h"
 #include "textComponent.h"
 
-textModifier::textModifier(gameObject* _owner, gameObject* _targetObject)
+textModifierComponent::textModifierComponent(gameObject* _owner, gameObject* _targetObject)
     : component(_owner)
     , targetObject(_targetObject)
 {
 }
 
-void textModifier::setTargetObject(gameObject* newTargetObject)
+void textModifierComponent::setTargetObject(gameObject* newTargetObject)
 {
     targetObject = newTargetObject;
 }
 
-sf::String textModifier::getText()
+sf::String textModifierComponent::getText()
 {
     auto comp = targetObject->getComponent<textComponent>();
     if (comp != nullptr)
@@ -22,7 +22,7 @@ sf::String textModifier::getText()
     }
 }
 
-void textModifier::setText(sf::String newText)
+void textModifierComponent::setText(sf::String newText)
 {
     auto comp = targetObject->getComponent<textComponent>();
     if (comp != nullptr)
