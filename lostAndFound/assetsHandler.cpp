@@ -40,11 +40,13 @@ assetsHandler::~assetsHandler()
 void assetsHandler::loadAllTextures()
 {
     loadTexture(texturesIndices::defaultTexture, "assets/defaultTexture.png");
+    loadTexture(texturesIndices::textBackground, "assets/textBackground.png");
+    loadTexture(texturesIndices::button, "assets/button.png");
 }
 
 void assetsHandler::loadAllFonts()
 {
-    //fonts
+    loadFont(fontsIndices::righteous, "assets/Righteous.ttf");
 }
 
 void assetsHandler::loadAllMusics()

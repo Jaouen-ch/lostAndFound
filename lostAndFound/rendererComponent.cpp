@@ -20,7 +20,13 @@ void rendererComponent::draw(sf::RenderWindow& window)
     window.draw(sprite);
 }
 
+sf::Texture rendererComponent::getTexture()
+{
+    return texture;
+}
+
 void rendererComponent::setTexture(assetsHandler::texturesIndices index)
 {
-    sprite.setTexture(assetsHandler::getAssets()->getTexture(index));
+    texture = assetsHandler::getAssets()->getTexture(index);
+    sprite.setTexture(texture);
 }

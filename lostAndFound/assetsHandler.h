@@ -8,11 +8,13 @@ public:
     enum class texturesIndices
     {
         defaultTexture,
+        textBackground,
+        button
     };
 
     enum class fontsIndices
     {
-        //fonts
+        righteous
     };
 
     enum class musicsIndices

@@ -2,6 +2,8 @@
 
 #include "counterComponent.h"
 #include "counterModifierComponent.h"
+#include "rendererModifierComponent.h"
+#include "transformModifierComponent.h"
 
 clickableComponent::clickableComponent(gameObject* _owner, sf::RenderWindow* _window, float _delay)
     : component(_owner)
@@ -34,9 +36,19 @@ void clickableComponent::update(float deltaTime)
     if (click)
     {
         auto counterModifierComp = owner->getComponent<counterModifierComponent>();
+        auto rendererModifierComp = owner->getComponent<rendererModifierComponent>();
+        auto transformModifierComp = owner->getComponent<transformModifierComponent>();
         if (counterModifierComp != nullptr)
         {
             counterModifierComp->setCount(counterModifierComp->getCount() + 1);
+        }
+        if (rendererModifierComp != nullptr)
+        {
+            rendererModifierComp->setTexture(assetsHandler::texturesIndices::defaultTexture);
+        }
+        if (transformModifierComp != nullptr)
+        {
+            transformModifierComp->setSize(transformModifierComp->getSize());
         }
     }
     if (wasButtonLeftPressed && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
