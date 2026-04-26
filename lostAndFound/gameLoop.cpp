@@ -6,6 +6,10 @@ gameLoop::gameLoop(sf::RenderWindow& window)
 {
     objects.reserve(10);
 
+    auto background = new gameObject({0, 0}, {1920, 1080}, 0);
+    background->addComponent(new rendererComponent(background, assetsHandler::texturesIndices::background));
+    objects.push_back(background);
+
     auto king = new gameObject({100, 300}, {120, 100}, 0);
     king->addComponent(new rendererComponent(king, assetsHandler::texturesIndices::king));
     objects.push_back(king);
