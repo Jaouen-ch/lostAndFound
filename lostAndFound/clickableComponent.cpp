@@ -37,6 +37,7 @@ void clickableComponent::update(float deltaTime)
     }
     if (click)
     {
+        int nb = engineRandom::getRandomNumber(4, 8);
         auto counterModifierComp = owner->getComponent<counterModifierComponent>();
         auto rendererModifierComp = owner->getComponent<rendererModifierComponent>();
         auto transformModifierComp = owner->getComponent<transformModifierComponent>();
@@ -47,7 +48,6 @@ void clickableComponent::update(float deltaTime)
         }
         if (rendererModifierComp != nullptr)
         {
-            int nb = engineRandom::getRandomNumber(4, 8);
             rendererModifierComp->setTexture(static_cast<assetsHandler::texturesIndices>(nb));
         }
         if (transformModifierComp != nullptr)
@@ -56,7 +56,19 @@ void clickableComponent::update(float deltaTime)
         }
         if (textModifierComp != nullptr)
         {
-            textModifierComp->setText("aaaaaa");
+            switch (nb)
+            {
+            case 4:
+                textModifierComp->setText("aaaaaa");
+            case 5:
+                textModifierComp->setText("aaaaaa");
+            case 6:
+                textModifierComp->setText("aaaaaa");
+            case 7:
+                textModifierComp->setText("aaaaaa");
+            case 8:
+                textModifierComp->setText("aaaaaa");
+            }
         }
     }
     if (wasButtonLeftPressed && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
