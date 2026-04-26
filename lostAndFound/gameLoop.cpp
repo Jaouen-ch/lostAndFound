@@ -1,5 +1,7 @@
 #include "gameLoop.h"
 
+#include "textModifierComponent.h"
+
 gameLoop::gameLoop(sf::RenderWindow& window)
 {
     objects.reserve(10);
@@ -12,13 +14,13 @@ gameLoop::gameLoop(sf::RenderWindow& window)
     citizen->addComponent(new rendererComponent(citizen, assetsHandler::texturesIndices::miner));
     objects.push_back(citizen);
 
-    auto blue = new gameObject({ 360, 20}, { 500, 15 }, 0);
-    blue->addComponent(new rendererComponent(blue, assetsHandler::texturesIndices::blue));
-    objects.push_back(blue);
-
-    auto red = new gameObject({ 360, 40}, { 500, 15 }, 0);
+    auto red = new gameObject({ 50.0f, 20}, {WINDOW_WIDTH - 100.0f, 20.0f }, 0);
     red->addComponent(new rendererComponent(red, assetsHandler::texturesIndices::red));
     objects.push_back(red);
+
+    auto blue = new gameObject({ 50.0f, 20}, {(WINDOW_WIDTH - 100.0f)/2, 20.0f }, 0);
+    blue->addComponent(new rendererComponent(blue, assetsHandler::texturesIndices::blue));
+    objects.push_back(blue);
 
     auto choiceTexte = new gameObject({50.0f, WINDOW_HEIGHT - WINDOW_HEIGHT/3.0f - 10.0f}, {WINDOW_WIDTH - 100.0f, WINDOW_HEIGHT/3.0f}, 0);
     choiceTexte->addComponent(new rendererComponent(choiceTexte, assetsHandler::texturesIndices::textBackground));
@@ -31,6 +33,7 @@ gameLoop::gameLoop(sf::RenderWindow& window)
     choiceButton1->addComponent(new clickableComponent(choiceButton1, &window));
     choiceButton1->addComponent(new rendererModifierComponent(choiceButton1, citizen));
     choiceButton1->addComponent(new transformModifierComponent(choiceButton1, choiceButton1));
+    choiceButton1->addComponent(new textModifierComponent(choiceButton1, choiceTexte));
     objects.push_back(choiceButton1);
 
     auto choiceButton2 = new gameObject({190.0f + (WINDOW_WIDTH - 100.0f)/2 - 100.0f, WINDOW_HEIGHT - WINDOW_HEIGHT/3.0f + 150.0f}, {(WINDOW_WIDTH - 100.0f)/2 - 180.0f, WINDOW_HEIGHT/3.0f - 200.0f}, 2);
@@ -39,6 +42,7 @@ gameLoop::gameLoop(sf::RenderWindow& window)
     choiceButton2->addComponent(new clickableComponent(choiceButton2, &window));
     choiceButton2->addComponent(new rendererModifierComponent(choiceButton2, citizen));
     choiceButton2->addComponent(new transformModifierComponent(choiceButton2, choiceButton2));
+    choiceButton2->addComponent(new textModifierComponent(choiceButton2, choiceTexte));
     objects.push_back(choiceButton2);
 }
 
@@ -56,14 +60,6 @@ void gameLoop::eventsHandler(sf::RenderWindow& window, const std::optional<sf::E
     if (event->is<sf::Event::Closed>())
     {
         window.close();
-    }
-    if (EventKarma->is<sf::Event::good>())
-    {
-        objects.push_back(gameObject({x-10,20}, 500,15}));
-    }
-    if (EventKarma->is<sf::Event::Bad>())
-    {
-        object.puch_back(gameObject({x+10, 20}, {500,15}));
     }
 }
 
