@@ -12,6 +12,14 @@ gameLoop::gameLoop(sf::RenderWindow& window)
     citizen->addComponent(new rendererComponent(citizen, assetsHandler::texturesIndices::miner));
     objects.push_back(citizen);
 
+    auto blue = new gameObject({ 360, 20}, { 500, 15 }, 0);
+    blue->addComponent(new rendererComponent(blue, assetsHandler::texturesIndices::blue));
+    objects.push_back(blue);
+
+    auto red = new gameObject({ 360, 40}, { 500, 15 }, 0);
+    red->addComponent(new rendererComponent(red, assetsHandler::texturesIndices::red));
+    objects.push_back(red);
+
     auto choiceTexte = new gameObject({50.0f, WINDOW_HEIGHT - WINDOW_HEIGHT/3.0f - 10.0f}, {WINDOW_WIDTH - 100.0f, WINDOW_HEIGHT/3.0f}, 0);
     choiceTexte->addComponent(new rendererComponent(choiceTexte, assetsHandler::texturesIndices::textBackground));
     choiceTexte->addComponent(new textComponent(choiceTexte, assetsHandler::fontsIndices::righteous, "abcdefghijklmnopqrstuvwxyz", {choiceTexte->getPosition().x + 130.0f, choiceTexte->getPosition().y + 40.0f}, 20));
@@ -41,12 +49,6 @@ gameLoop::~gameLoop()
         delete object;
         object = nullptr;
     }
-
-    objects.push_back(gameObject({ 360, 20}, { 500, 15 }));
-    objects[0].addComponent(new rendererComponent(&objects[0], assetsHandler::texturesIndices::blue));
-
-    objects.push_back(gameObject({ 360, 40}, { 500, 15 }));
-    objects[1].addComponent(new rendererComponent(&objects[1], assetsHandler::texturesIndices::red));
 }
 
 void gameLoop::eventsHandler(sf::RenderWindow& window, const std::optional<sf::Event>& event)
@@ -62,6 +64,7 @@ void gameLoop::eventsHandler(sf::RenderWindow& window, const std::optional<sf::E
     if (EventKarma->is<sf::Event::Bad>())
     {
         object.puch_back(gameObject({x+10, 20}, {500,15}));
+    }
 }
 
 void gameLoop::update()
