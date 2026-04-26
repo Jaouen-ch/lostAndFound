@@ -13,7 +13,7 @@ void rendererModifierComponent::setTargetObject(gameObject* newTargetObject)
     targetObject = newTargetObject;
 }
 
-sf::Texture rendererModifierComponent::getTexture()
+assetsHandler::texturesIndices rendererModifierComponent::getTexture()
 {
     auto comp = targetObject->getComponent<rendererComponent>();
     if (comp != nullptr)

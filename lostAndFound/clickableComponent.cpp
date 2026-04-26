@@ -39,7 +39,7 @@ void clickableComponent::update(float deltaTime)
     }
     if (click)
     {
-        int nb = engineRandom::getRandomNumber(4, 8);
+        int nb = engineRandom::getRandomNumber(4, 9);
         auto counterModifierComp = owner->getComponent<counterModifierComponent>();
         auto rendererModifierComp = owner->getComponent<rendererModifierComponent>();
         auto transformModifierComp = owner->getComponent<transformModifierComponent>();
@@ -51,88 +51,118 @@ void clickableComponent::update(float deltaTime)
         }
         if (rendererModifierComp != nullptr)
         {
-            rendererModifierComp->setTexture(static_cast<assetsHandler::texturesIndices>(nb));
+            if (!(firstClick && owner->button == 2))
+            {
+                rendererModifierComp->setTexture(static_cast<assetsHandler::texturesIndices>(nb));
+            }
+            if (rendererModifierComp->getTexture() != assetsHandler::texturesIndices::oldMan)
+            {
+                firstClick = false;
+            }
         }
         if (transformModifierComp != nullptr && owner->button != 0)
         {
-            if (owner->goodButton)
+            if (firstClick && owner->button == 2)
             {
-                transformModifierComp->setSize({transformModifierComp->getSize().x + (WINDOW_WIDTH - 100.0f)/10, transformModifierComp->getSize().y});
+                transformModifierComp->setSize({0.0f, transformModifierComp->getSize().y});
             }
             else
             {
-                transformModifierComp->setSize({transformModifierComp->getSize().x - (WINDOW_WIDTH - 100.0f)/10, transformModifierComp->getSize().y});
+                if (owner->goodButton)
+                {
+                    transformModifierComp->setSize({transformModifierComp->getSize().x + (WINDOW_WIDTH - 100.0f)/10, transformModifierComp->getSize().y});
+                }
+                else
+                {
+                    transformModifierComp->setSize({transformModifierComp->getSize().x - (WINDOW_WIDTH - 100.0f)/10, transformModifierComp->getSize().y});
+                }
             }
         }
         if (textModifierComp != nullptr && buttonModifierComp != nullptr && owner->button != 0)
         {
-            switch (nb)
+            if (!(firstClick && owner->button == 2))
             {
-            case 4:
-                textModifierComp->setText("Enlever la taxe pour le village ?");
-                if (owner->button == 1)
+                switch (nb)
                 {
-                    owner->goodButton = false;
-                    buttonModifierComp->setGoodButton(true);
+                case 4:
+                    textModifierComp->setText(L"Messire, nous les mineurs risquons nos vies tout les\njours pour quelques pièces. Auriez-vous la grandeur de\nbaisser les taxes sur le fer ?");
+                    if (owner->button == 1)
+                    {
+                        owner->goodButton = true;
+                        buttonModifierComp->setGoodButton(false);
+                    }
+                    else
+                    {
+                        owner->goodButton = false;
+                        buttonModifierComp->setGoodButton(true);
+                    }
+                    break;
+                case 5:
+                    textModifierComp->setText(L"Je me présente à vous aujourd'hui car mon village s'est\nfait attaquer par une bande de brigands. Pourriez-vous\ny envoyer des soldats pour les repousser ?");
+                    if (owner->button == 1)
+                    {
+                        owner->goodButton = true;
+                        buttonModifierComp->setGoodButton(false);
+                    }
+                    else
+                    {
+                        owner->goodButton = false;
+                        buttonModifierComp->setGoodButton(true);
+                    }
+                    break;
+                case 6:
+                    textModifierComp->setText(L"Mon roi, la famine entrave le royaume. Pourriez-vous\norganiser des distributions de vivres pour soulager\nle peuple ?");
+                    if (owner->button == 1)
+                    {
+                        owner->goodButton = true;
+                        buttonModifierComp->setGoodButton(false);
+                    }
+                    else
+                    {
+                        owner->goodButton = false;
+                        buttonModifierComp->setGoodButton(true);
+                    }
+                    break;
+                case 7:
+                    textModifierComp->setText(L"Bonjour messire. Laissez moi me présenter, je suis\nGontran, un simple marchand itinérant. J'aimerais\ndévelopper un commerce lucratif dans votre beau\nroyaume. Pourriez vous réinstaurer l'esclavage ?");
+                    if (owner->button == 1)
+                    {
+                        owner->goodButton = false;
+                        buttonModifierComp->setGoodButton(true);
+                    }
+                    else
+                    {
+                        owner->goodButton = true;
+                        buttonModifierComp->setGoodButton(false);
+                    }
+                    break;
+                case 8:
+                    textModifierComp->setText(L"Enchanté de vous rencontrer messire. Je me présente\naujourd'hui devant vous pour vous demander de vider\nles cimetières de la ville car ils propagent les maladies.");
+                    if (owner->button == 1)
+                    {
+                        owner->goodButton = true;
+                        buttonModifierComp->setGoodButton(false);
+                    }
+                    else
+                    {
+                        owner->goodButton = false;
+                        buttonModifierComp->setGoodButton(true);
+                    }
+                    break;
+                case 9:
+                    textModifierComp->setText(L"Sire, nous avons attrapé un voleur à l'étalage,\ndevons-nous le pendre en place publique ?");
+                    if (owner->button == 1)
+                    {
+                        owner->goodButton = false;
+                        buttonModifierComp->setGoodButton(true);
+                    }
+                    else
+                    {
+                        owner->goodButton = true;
+                        buttonModifierComp->setGoodButton(false);
+                    }
+                    break;
                 }
-                else
-                {
-                    owner->goodButton = true;
-                    buttonModifierComp->setGoodButton(false);
-                }
-                break;
-            case 5:
-                textModifierComp->setText("Soignez nos maladie");
-                if (owner->button == 1)
-                {
-                    owner->goodButton = false;
-                    buttonModifierComp->setGoodButton(true);
-                }
-                else
-                {
-                    owner->goodButton = true;
-                    buttonModifierComp->setGoodButton(false);
-                }
-                break;
-            case 6:
-                textModifierComp->setText("Aidez nous contre la famine");
-                if (owner->button == 1)
-                {
-                    owner->goodButton = false;
-                    buttonModifierComp->setGoodButton(true);
-                }
-                else
-                {
-                    owner->goodButton = true;
-                    buttonModifierComp->setGoodButton(false);
-                }
-                break;
-            case 7:
-                textModifierComp->setText("Aidez nous a tuer nos ennemies");
-                if (owner->button == 1)
-                {
-                    owner->goodButton = false;
-                    buttonModifierComp->setGoodButton(true);
-                }
-                else
-                {
-                    owner->goodButton = true;
-                    buttonModifierComp->setGoodButton(false);
-                }
-                break;
-            case 8:
-                textModifierComp->setText("Ramenez nous plus de betails");
-                if (owner->button == 1)
-                {
-                    owner->goodButton = false;
-                    buttonModifierComp->setGoodButton(true);
-                }
-                else
-                {
-                    owner->goodButton = true;
-                    buttonModifierComp->setGoodButton(false);
-                }
-                break;
             }
         }
     }

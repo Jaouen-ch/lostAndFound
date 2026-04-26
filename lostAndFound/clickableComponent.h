@@ -10,6 +10,8 @@ private:
     float timer = 0.0f;
     bool wasButtonLeftPressed = false;
 
+    bool firstClick = true;
+
 public:
     clickableComponent(gameObject* _owner, sf::RenderWindow* _window, float _delay);
     clickableComponent(gameObject* _owner, sf::RenderWindow* _window);

@@ -15,17 +15,17 @@ gameLoop::gameLoop(sf::RenderWindow& window)
     objects.push_back(king);
 
     auto citizen = new gameObject({1000, 384}, {80, 80}, 0);
-    citizen->addComponent(new rendererComponent(citizen, assetsHandler::texturesIndices::miner));
+    citizen->addComponent(new rendererComponent(citizen, assetsHandler::texturesIndices::oldMan));
     objects.push_back(citizen);
 
     auto choiceTexte = new gameObject({50.0f, WINDOW_HEIGHT - WINDOW_HEIGHT/3.0f - 10.0f}, {WINDOW_WIDTH - 100.0f, WINDOW_HEIGHT/3.0f}, 0);
     choiceTexte->addComponent(new rendererComponent(choiceTexte, assetsHandler::texturesIndices::textBackground));
-    choiceTexte->addComponent(new textComponent(choiceTexte, assetsHandler::fontsIndices::righteous, "les citoyens peuvent rentrer !", {choiceTexte->getPosition().x + 130.0f, choiceTexte->getPosition().y + 40.0f}, 20));
+    choiceTexte->addComponent(new textComponent(choiceTexte, assetsHandler::fontsIndices::darinia, L"Toi, roi tyrannique, tu as assez causé de malheurs.\nRepens-toi de tes péchés ou la mort t'attend !", {choiceTexte->getPosition().x + 130.0f, choiceTexte->getPosition().y + 40.0f}, 25));
     objects.push_back(choiceTexte);
 
     auto choiceButton1 = new gameObject({190.0f, WINDOW_HEIGHT - WINDOW_HEIGHT/3.0f + 150.0f}, {(WINDOW_WIDTH - 100.0f)/2 - 180.0f, WINDOW_HEIGHT/3.0f - 200.0f}, 1);
     choiceButton1->addComponent(new rendererComponent(choiceButton1, assetsHandler::texturesIndices::button));
-    choiceButton1->addComponent(new textComponent(choiceButton1, assetsHandler::fontsIndices::righteous, "Non", {choiceButton1->getPosition().x + 20.0f, choiceButton1->getPosition().y + 20.0f}, 20));
+    choiceButton1->addComponent(new textComponent(choiceButton1, assetsHandler::fontsIndices::darinia, "Accepter", {choiceButton1->getPosition().x + 25.0f, choiceButton1->getPosition().y + 12.0f}, 25));
     choiceButton1->addComponent(new clickableComponent(choiceButton1, &window));
     choiceButton1->addComponent(new rendererModifierComponent(choiceButton1, citizen));
     choiceButton1->addComponent(new textModifierComponent(choiceButton1, choiceTexte));
@@ -33,7 +33,7 @@ gameLoop::gameLoop(sf::RenderWindow& window)
 
     auto choiceButton2 = new gameObject({190.0f + (WINDOW_WIDTH - 100.0f)/2 - 100.0f, WINDOW_HEIGHT - WINDOW_HEIGHT/3.0f + 150.0f}, {(WINDOW_WIDTH - 100.0f)/2 - 180.0f, WINDOW_HEIGHT/3.0f - 200.0f}, 2);
     choiceButton2->addComponent(new rendererComponent(choiceButton2, assetsHandler::texturesIndices::button));
-    choiceButton2->addComponent(new textComponent(choiceButton2, assetsHandler::fontsIndices::righteous, "Oui", {choiceButton2->getPosition().x + 20.0f, choiceButton2->getPosition().y + 20.0f}, 20));
+    choiceButton2->addComponent(new textComponent(choiceButton2, assetsHandler::fontsIndices::darinia, "Refuser", {choiceButton2->getPosition().x + 25.0f, choiceButton2->getPosition().y + 12.0f}, 25));
     choiceButton2->addComponent(new clickableComponent(choiceButton2, &window));
     choiceButton2->addComponent(new rendererModifierComponent(choiceButton2, citizen));
     choiceButton2->addComponent(new textModifierComponent(choiceButton2, choiceTexte));

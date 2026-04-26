@@ -2,6 +2,7 @@
 
 rendererComponent::rendererComponent(gameObject* _owner, assetsHandler::texturesIndices index)
     : component(_owner)
+    , textureIndex(index)
     , texture(assetsHandler::getAssets()->getTexture(index))
     , sprite(sf::Sprite(texture))
 {
@@ -20,13 +21,14 @@ void rendererComponent::draw(sf::RenderWindow& window)
     window.draw(sprite);
 }
 
-sf::Texture rendererComponent::getTexture()
+assetsHandler::texturesIndices rendererComponent::getTexture()
 {
-    return texture;
+    return textureIndex;
 }
 
 void rendererComponent::setTexture(assetsHandler::texturesIndices index)
 {
+    textureIndex = index;
     texture = assetsHandler::getAssets()->getTexture(index);
     sprite.setTexture(texture);
 }

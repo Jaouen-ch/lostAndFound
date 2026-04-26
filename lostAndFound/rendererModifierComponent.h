@@ -13,6 +13,6 @@ public:
     ~rendererModifierComponent() override = default;
 
     void setTargetObject(gameObject* newTargetObject);
-    sf::Texture getTexture();
+    assetsHandler::texturesIndices getTexture();
     void setTexture(assetsHandler::texturesIndices newTexture);
 };

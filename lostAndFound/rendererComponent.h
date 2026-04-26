@@ -6,6 +6,7 @@
 class rendererComponent final : public component
 {
 private:
+    assetsHandler::texturesIndices textureIndex;
     sf::Texture texture;
     sf::Sprite sprite;
 
@@ -16,6 +17,6 @@ public:
     void update(float deltaTime) override;
     void draw(sf::RenderWindow& window) override;
 
-    sf::Texture getTexture();
+    assetsHandler::texturesIndices getTexture();
     void setTexture(assetsHandler::texturesIndices index);
 };

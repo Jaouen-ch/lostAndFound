@@ -16,14 +16,17 @@ public:
         nun,
         merchant,
         gravedigger,
+        guard,
+        oldMan,
         blue,
         red,
-        background,
+        background
     };
 
     enum class fontsIndices
     {
-        righteous
+        righteous,
+        darinia
     };
 
     enum class musicsIndices
