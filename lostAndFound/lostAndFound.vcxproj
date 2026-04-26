@@ -131,7 +131,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="assetsHandler.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="clickableComponent.cpp" />
+    <ClCompile Include="colliderComponent.cpp" />
+    <ClCompile Include="component.cpp" />
+    <ClCompile Include="counterComponent.cpp" />
+    <ClCompile Include="counterModifierComponent.cpp" />
+    <ClCompile Include="engineRandom.cpp" />
+    <ClCompile Include="gameLoop.cpp" />
+    <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="lostAndFound.cpp" />
+    <ClCompile Include="rendererComponent.cpp" />
+    <ClCompile Include="textComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assetsHandler.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="clickableComponent.h" />
+    <ClInclude Include="colliderComponent.h" />
+    <ClInclude Include="component.h" />
+    <ClInclude Include="counterComponent.h" />
+    <ClInclude Include="counterModifierComponent.h" />
+    <ClInclude Include="engineRandom.h" />
+    <ClInclude Include="gameLoop.h" />
+    <ClInclude Include="gameObject.h" />
+    <ClInclude Include="rendererComponent.h" />
+    <ClInclude Include="textComponent.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

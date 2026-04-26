@@ -16,6 +16,8 @@ public:
         nun,
         merchant,
         gravedigger,
+        blue,
+        red,
     };
 
     enum class fontsIndices
