@@ -17,6 +17,13 @@ void gameLoop::eventsHandler(sf::RenderWindow& window, const std::optional<sf::E
     {
         window.close();
     }
+    if (EventKarma->is<sf::Event::good>())
+    {
+        objects.push_back(gameObject({x-10,20}, 500,15}));
+    }
+    if (EventKarma->is<sf::Event::Bad>())
+    {
+        object.puch_back(gameObject({x+10, 20}, {500,15}));
 }
 
 void gameLoop::update()
