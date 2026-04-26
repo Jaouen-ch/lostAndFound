@@ -1,8 +1,9 @@
 #include "gameObject.h"
 
-gameObject::gameObject(sf::Vector2f _position, sf::Vector2f _size)
+gameObject::gameObject(sf::Vector2f _position, sf::Vector2f _size, int _button)
     : position(_position)
     , size(_size)
+    , button(_button)
 {
 }
 

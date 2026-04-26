@@ -40,6 +40,8 @@ assetsHandler::~assetsHandler()
 void assetsHandler::loadAllTextures()
 {
     loadTexture(texturesIndices::defaultTexture, "assets/defaultTexture.png");
+    loadTexture(texturesIndices::textBackground, "assets/textBackground.png");
+    loadTexture(texturesIndices::button, "assets/button.png");
     loadTexture(texturesIndices::king, "assets/MiniKingMan.png");
     loadTexture(texturesIndices::miner, "assets/MiniMiner.png");
     loadTexture(texturesIndices::black, "assets/MiniBlacksmith.png");
@@ -51,7 +53,7 @@ void assetsHandler::loadAllTextures()
 
 void assetsHandler::loadAllFonts()
 {
-    //fonts
+    loadFont(fontsIndices::righteous, "assets/Righteous.ttf");
 }
 
 void assetsHandler::loadAllMusics()

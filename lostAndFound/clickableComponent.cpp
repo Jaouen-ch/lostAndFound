@@ -1,7 +1,10 @@
 #include "clickableComponent.h"
+
+#include "engineRandom.h"
 #include "textComponent.h"
 #include "counterModifierComponent.h"
 #include "rendererModifierComponent.h"
+#include "textModifierComponent.h"
 #include "transformModifierComponent.h"
 
 clickableComponent::clickableComponent(gameObject* _owner, sf::RenderWindow* _window, float _delay)
@@ -37,25 +40,23 @@ void clickableComponent::update(float deltaTime)
         auto counterModifierComp = owner->getComponent<counterModifierComponent>();
         auto rendererModifierComp = owner->getComponent<rendererModifierComponent>();
         auto transformModifierComp = owner->getComponent<transformModifierComponent>();
+        auto textModifierComp = owner->getComponent<textModifierComponent>();
         if (counterModifierComp != nullptr)
         {
             counterModifierComp->setCount(counterModifierComp->getCount() + 1);
         }
         if (rendererModifierComp != nullptr)
         {
-            rendererModifierComp->setTexture(assetsHandler::texturesIndices::defaultTexture);
+            int nb = engineRandom::getRandomNumber(4, 8);
+            rendererModifierComp->setTexture(static_cast<assetsHandler::texturesIndices>(nb));
         }
         if (transformModifierComp != nullptr)
         {
             transformModifierComp->setSize(transformModifierComp->getSize());
         }
-    }
-    if (click)
-    {
-        auto textComp = owner->getComponent<textComponent>();
-        if (textComp != nullptr)
+        if (textModifierComp != nullptr)
         {
-            textComp->setText("aaaaaa");
+            textModifierComp->setText("aaaaaa");
         }
     }
     if (wasButtonLeftPressed && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))

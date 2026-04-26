@@ -11,7 +11,9 @@ private:
     std::vector<component*> components = {};
 
 public:
-    gameObject(sf::Vector2f _position, sf::Vector2f _size);
+    int button = 0;
+
+    gameObject(sf::Vector2f _position, sf::Vector2f _size, int _button);
     ~gameObject();
 
     void update(float deltaTime);
