@@ -48,6 +48,7 @@ void assetsHandler::loadAllTextures()
     loadTexture(texturesIndices::nun, "assets/MiniNun.png");
     loadTexture(texturesIndices::merchant, "assets/MiniMerchant_1.png");
     loadTexture(texturesIndices::gravedigger, "assets/MiniGraveDigger.png");
+    loadTexture(texturesIndices::background, "assets/background.png");
 
 }
 

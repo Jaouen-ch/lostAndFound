@@ -18,6 +18,7 @@ public:
         gravedigger,
         blue,
         red,
+        background,
     };
 
     enum class fontsIndices
