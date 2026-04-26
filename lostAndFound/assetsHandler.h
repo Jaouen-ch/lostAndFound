@@ -8,7 +8,12 @@ public:
     enum class texturesIndices
     {
         defaultTexture,
-
+        king,
+        miner,
+        black,
+        nun,
+        merchant,
+        gravedigger,
     };
 
     enum class fontsIndices

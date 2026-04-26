@@ -1,6 +1,5 @@
 #include "clickableComponent.h"
 #include "textComponent.h"
-#include "counterComponent.h"
 #include "counterModifierComponent.h"
 
 clickableComponent::clickableComponent(gameObject* _owner, sf::RenderWindow* _window, float _delay)

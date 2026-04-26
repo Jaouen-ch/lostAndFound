@@ -40,6 +40,13 @@ assetsHandler::~assetsHandler()
 void assetsHandler::loadAllTextures()
 {
     loadTexture(texturesIndices::defaultTexture, "assets/defaultTexture.png");
+    loadTexture(texturesIndices::king, "assets/MiniKingMan.png");
+    loadTexture(texturesIndices::miner, "assets/MiniMiner.png");
+    loadTexture(texturesIndices::black, "assets/MiniBlacksmith.png");
+    loadTexture(texturesIndices::nun, "assets/MiniNun.png");
+    loadTexture(texturesIndices::merchant, "assets/MiniMerchant_1.png");
+    loadTexture(texturesIndices::gravedigger, "assets/MiniGraveDigger.png");
+
 }
 
 void assetsHandler::loadAllFonts()
