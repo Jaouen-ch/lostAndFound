@@ -69,7 +69,7 @@ void clickableComponent::update(float deltaTime)
             switch (nb)
             {
             case 4:
-                textModifierComp->setText("a");
+                textModifierComp->setText("Enlever la taxe pour le village ?");
                 if (owner->button == 1)
                 {
                     owner->goodButton = false;
@@ -82,7 +82,7 @@ void clickableComponent::update(float deltaTime)
                 }
                 break;
             case 5:
-                textModifierComp->setText("b");
+                textModifierComp->setText("Soignez nos maladie");
                 if (owner->button == 1)
                 {
                     owner->goodButton = false;
@@ -95,7 +95,7 @@ void clickableComponent::update(float deltaTime)
                 }
                 break;
             case 6:
-                textModifierComp->setText("c");
+                textModifierComp->setText("Aidez nous contre la famine");
                 if (owner->button == 1)
                 {
                     owner->goodButton = false;
@@ -108,7 +108,7 @@ void clickableComponent::update(float deltaTime)
                 }
                 break;
             case 7:
-                textModifierComp->setText("d");
+                textModifierComp->setText("Aidez nous a tuer nos ennemies");
                 if (owner->button == 1)
                 {
                     owner->goodButton = false;
@@ -121,7 +121,7 @@ void clickableComponent::update(float deltaTime)
                 }
                 break;
             case 8:
-                textModifierComp->setText("e");
+                textModifierComp->setText("Ramenez nous plus de betails");
                 if (owner->button == 1)
                 {
                     owner->goodButton = false;
