@@ -7,6 +7,7 @@
 #include "textComponent.h"
 #include "rendererModifierComponent.h"
 #include "transformModifierComponent.h"
+#include "buttonModifierComponent.h"
 
 class gameLoop
 {
