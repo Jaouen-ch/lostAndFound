@@ -1,5 +1,7 @@
 #include "clickableComponent.h"
 
+#include "buttonModifierComponent.h"
+#include "utils.h"
 #include "engineRandom.h"
 #include "textComponent.h"
 #include "counterModifierComponent.h"
@@ -42,6 +44,7 @@ void clickableComponent::update(float deltaTime)
         auto rendererModifierComp = owner->getComponent<rendererModifierComponent>();
         auto transformModifierComp = owner->getComponent<transformModifierComponent>();
         auto textModifierComp = owner->getComponent<textModifierComponent>();
+        auto buttonModifierComp = owner->getComponent<buttonModifierComponent>();
         if (counterModifierComp != nullptr)
         {
             counterModifierComp->setCount(counterModifierComp->getCount() + 1);
@@ -50,24 +53,86 @@ void clickableComponent::update(float deltaTime)
         {
             rendererModifierComp->setTexture(static_cast<assetsHandler::texturesIndices>(nb));
         }
-        if (transformModifierComp != nullptr)
+        if (transformModifierComp != nullptr && owner->button != 0)
         {
-            transformModifierComp->setSize(transformModifierComp->getSize());
+            if (owner->goodButton)
+            {
+                transformModifierComp->setSize({transformModifierComp->getSize().x + (WINDOW_WIDTH - 100.0f)/10, transformModifierComp->getSize().y});
+            }
+            else
+            {
+                transformModifierComp->setSize({transformModifierComp->getSize().x - (WINDOW_WIDTH - 100.0f)/10, transformModifierComp->getSize().y});
+            }
         }
-        if (textModifierComp != nullptr)
+        if (textModifierComp != nullptr && buttonModifierComp != nullptr && owner->button != 0)
         {
             switch (nb)
             {
             case 4:
-                textModifierComp->setText("aaaaaa");
+                textModifierComp->setText("a");
+                if (owner->button == 1)
+                {
+                    owner->goodButton = false;
+                    buttonModifierComp->setGoodButton(true);
+                }
+                else
+                {
+                    owner->goodButton = true;
+                    buttonModifierComp->setGoodButton(false);
+                }
+                break;
             case 5:
-                textModifierComp->setText("aaaaaa");
+                textModifierComp->setText("b");
+                if (owner->button == 1)
+                {
+                    owner->goodButton = false;
+                    buttonModifierComp->setGoodButton(true);
+                }
+                else
+                {
+                    owner->goodButton = true;
+                    buttonModifierComp->setGoodButton(false);
+                }
+                break;
             case 6:
-                textModifierComp->setText("aaaaaa");
+                textModifierComp->setText("c");
+                if (owner->button == 1)
+                {
+                    owner->goodButton = false;
+                    buttonModifierComp->setGoodButton(true);
+                }
+                else
+                {
+                    owner->goodButton = true;
+                    buttonModifierComp->setGoodButton(false);
+                }
+                break;
             case 7:
-                textModifierComp->setText("aaaaaa");
+                textModifierComp->setText("d");
+                if (owner->button == 1)
+                {
+                    owner->goodButton = false;
+                    buttonModifierComp->setGoodButton(true);
+                }
+                else
+                {
+                    owner->goodButton = true;
+                    buttonModifierComp->setGoodButton(false);
+                }
+                break;
             case 8:
-                textModifierComp->setText("aaaaaa");
+                textModifierComp->setText("e");
+                if (owner->button == 1)
+                {
+                    owner->goodButton = false;
+                    buttonModifierComp->setGoodButton(true);
+                }
+                else
+                {
+                    owner->goodButton = true;
+                    buttonModifierComp->setGoodButton(false);
+                }
+                break;
             }
         }
     }

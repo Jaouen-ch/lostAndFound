@@ -12,6 +12,7 @@ private:
 
 public:
     int button = 0;
+    bool goodButton = false;
 
     gameObject(sf::Vector2f _position, sf::Vector2f _size, int _button);
     ~gameObject();
