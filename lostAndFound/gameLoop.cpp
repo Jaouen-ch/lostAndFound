@@ -26,6 +26,7 @@ gameLoop::gameLoop(sf::RenderWindow& window)
     choiceButton2->addComponent(new rendererModifierComponent(choiceButton2, choiceButton2));
     choiceButton2->addComponent(new transformModifierComponent(choiceButton2, choiceButton2));
     objects.push_back(choiceButton2);
+
 }
 
 gameLoop::~gameLoop()
